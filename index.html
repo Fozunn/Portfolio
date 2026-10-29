@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferhat Özün Ögeyik | Full-Stack Developer</title>
+    <link rel="icon" href="images/photo 1.jpeg" type="image/photo 1.jpeg">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter (Sans-serif) ve Playfair Display (Serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        bgDark: '#0a0a0a',
+                        textPrimary: '#ededed',
+                        textSecondary: '#8a8a8a',
+                        lineColor: '#1f1f1f',
+                        pillBg: '#141414',
+                        pillActive: '#2a2a2a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #ededed;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background-color: #ededed;
+            color: #0a0a0a;
+        }
+
+        /* Pill Button Active Glow */
+        .pill-active {
+            background-color: #2a2a2a;
+            color: #ffffff;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        /* Fade Animation for Tab Switching */
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hover Arrow Animation */
+        .group:hover .arrow-icon {
+            transform: translate(2px, -2px);
+        }
+    </style>
+</head>
+<body class="bg-bgDark text-textPrimary">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-bgDark/80 backdrop-blur-md pt-6 pb-4 px-6 md:px-12 lg:px-20 border-b border-transparent transition-all duration-300" id="navbar">
+        <div class="max-w-screen-2xl mx-auto flex items-start md:items-center justify-between">
+            
+            <!-- Sol: İsim ve Ünvan -->
+            <div class="flex-1 flex flex-col">
+                <a href="#" class="text-3xl md:text-4xl font-bold text-textPrimary tracking-tighter mb-2 hover:opacity-80 transition-opacity">
+                    FÖÖ.
+                </a>
+                <a href="#" class="text-[17px] font-medium tracking-tight text-textPrimary leading-tight">
+                    Ferhat Özün Ögeyik
+                </a>
+                <span class="text-[13px] text-textSecondary mt-0.5">
+                    Full-Stack Developer
+                </span>
+            </div>
+            
+            <!-- Orta: Work / Info Toggle -->
+            <div class="hidden md:flex justify-center flex-1">
+                <div class="bg-pillBg rounded-full p-1 flex items-center border border-lineColor/50">
+                    <button id="btn-work" onclick="switchTab('work')" class="pill-active px-6 py-1.5 rounded-full text-[14px] font-medium transition-all duration-300">
+                        Deneyim
+                    </button>
+                    <button id="btn-info" onclick="switchTab('info')" class="text-textSecondary hover:text-white px-6 py-1.5 rounded-full text-[14px] font-medium transition-all duration-300">
+                        Bilgi
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sağ: Linkler -->
+            <div class="flex-1 flex justify-end items-center gap-6 text-[14px]">
+                <a href="https://www.linkedin.com/in/ferhat-özün-ögeyik/" target="_blank" class="hidden md:flex items-center gap-1 text-textPrimary hover:text-textSecondary transition-colors group">
+                    LinkedIn 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 arrow-icon transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+                <a href="https://github.com/Fozunn" target="_blank" class="hidden md:flex items-center gap-1 text-textPrimary hover:text-textSecondary transition-colors group">
+                    GitHub
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 arrow-icon transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+                <a href="FERHAT ÖZÜN ÖGEYİK ÖZGEÇMİŞ.pdf" target="_blank" class="flex items-center gap-1 text-textPrimary hover:text-textSecondary transition-colors group">
+                    Özgeçmiş
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 arrow-icon transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+            </div>
+
+            <!-- Mobil İçin Alt Menü (Opsiyonel basit görünüm) -->
+            <div class="fixed bottom-6 left-1/2 -translate-x-1/2 md:hidden z-50">
+                <div class="bg-pillBg rounded-full p-1 flex items-center border border-lineColor/50 shadow-2xl">
+                    <button id="btn-work-mobile" onclick="switchTab('work')" class="pill-active px-6 py-2 rounded-full text-[14px] font-medium transition-all duration-300">
+                        Deneyim
+                    </button>
+                    <button id="btn-info-mobile" onclick="switchTab('info')" class="text-textSecondary hover:text-white px-6 py-2 rounded-full text-[14px] font-medium transition-all duration-300">
+                        Bilgi
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Ana İçerik Konteyneri -->
+    <main class="max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20 pt-40 pb-32">
+
+        <!-- ================= WORK BÖLÜMÜ ================= -->
+        <section id="section-work" class="fade-in block">
+            
+            <!-- Hero Yazısı -->
+            <div class="mb-32 max-w-4xl">
+                <h1 class="text-3xl md:text-5xl lg:text-[56px] font-medium tracking-tight leading-[1.1] text-textPrimary">
+                    Modern web teknolojileri ile dijital çözümler ve ölçeklenebilir uygulamalar geliştiriyorum.
+                </h1>
+            </div>
+
+            <!-- Projeler -->
+            <div class="mb-32">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-1.5 h-1.5 bg-textPrimary rotate-45"></div>
+                    <span class="text-xs font-semibold tracking-widest text-textSecondary uppercase">Projeler</span>
+                </div>
+                
+                <div class="border-t border-lineColor">
+                    <!-- Proje 1 -->
+                    <a href="kulturmuzik.html" class="group flex flex-col md:flex-row md:items-center justify-between py-10 border-b border-lineColor hover:pl-4 transition-all duration-300">
+                        <div class="md:w-2/3 pr-8">
+                            <h3 class="text-2xl md:text-4xl font-medium text-textPrimary mb-3">Müzik Sanatçı Profil Kütüphanesi</h3>
+                            <p class="text-textSecondary font-light leading-relaxed">
+                                Sanatçıların eserlerini sunduğu, doğrudan kullanıcı bağlantılı dijital müzik platformu.
+                            </p>
+                        </div>
+                        <div class="md:w-1/3 flex justify-between items-center mt-6 md:mt-0 text-textSecondary group-hover:text-textPrimary transition-colors">
+                            <span class="text-sm font-medium">MERN Stack</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        </div>
+                    </a>
+
+                    <!-- Proje 2 -->
+                    <a href="fanvoyage.html" class="group flex flex-col md:flex-row md:items-center justify-between py-10 border-b border-lineColor hover:pl-4 transition-all duration-300">
+                        <div class="md:w-2/3 pr-8">
+                            <h3 class="text-2xl md:text-4xl font-medium text-textPrimary mb-3">FanVoyage Etkinlik Sistemi</h3>
+                            <p class="text-textSecondary font-light leading-relaxed">
+                                İngiltere kökenli turizm şirketi için Full-Stack platform. Kategorizasyon ve API entegrasyonları.
+                            </p>
+                        </div>
+                        <div class="md:w-1/3 flex justify-between items-center mt-6 md:mt-0 text-textSecondary group-hover:text-textPrimary transition-colors">
+                            <span class="text-sm font-medium">React, Java, TS</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        </div>
+                    </a>
+
+                    <!-- Proje 3 -->
+                    <a href="horilla.html" class="group flex flex-col md:flex-row md:items-center justify-between py-10 border-b border-lineColor hover:pl-4 transition-all duration-300">
+                        <div class="md:w-2/3 pr-8">
+                            <h3 class="text-2xl md:text-4xl font-medium text-textPrimary mb-3">Horilla İK Yönetimi</h3>
+                            <p class="text-textSecondary font-light leading-relaxed">
+                                Open Source İK yönetim sisteminin geliştirilmesi, çoklu dil desteği ve JS iyileştirmeleri.
+                            </p>
+                        </div>
+                        <div class="md:w-1/3 flex justify-between items-center mt-6 md:mt-0 text-textSecondary group-hover:text-textPrimary transition-colors">
+                            <span class="text-sm font-medium">Django, JS</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Deneyimler -->
+            <div>
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="w-1.5 h-1.5 bg-textPrimary rotate-45"></div>
+                    <span class="text-xs font-semibold tracking-widest text-textSecondary uppercase">Deneyim</span>
+                </div>
+
+                <div class="border-t border-lineColor">
+                    <!-- Deneyim 1 -->
+                    <div class="py-8 border-b border-lineColor flex flex-col md:flex-row md:items-start justify-between gap-4 group">
+                        <div class="md:w-1/4 pt-1">
+                            <p class="text-textSecondary text-sm font-medium">2025 — 2026</p>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h4 class="text-xl md:text-2xl font-medium text-textPrimary mb-1">Huawei Student Developers (HSD)</h4>
+                            <p class="text-textSecondary mb-4">Üye & Koordinatör</p>
+                            <p class="text-textSecondary/80 font-light max-w-2xl">
+                                Cloud ve Web alanlarında eğitimler alıp şirket dinamiklerine uygun etkinliklerde koordinatörlük görevleri üstlendim.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Deneyim 2 -->
+                    <div class="py-8 border-b border-lineColor flex flex-col md:flex-row md:items-start justify-between gap-4 group">
+                        <div class="md:w-1/4 pt-1">
+                            <p class="text-textSecondary text-sm font-medium">Yaz 2025</p>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h4 class="text-xl md:text-2xl font-medium text-textPrimary mb-1">iKnow Technology</h4>
+                            <p class="text-textSecondary mb-4">Full-Stack Stajyer</p>
+                            <p class="text-textSecondary/80 font-light max-w-2xl">
+                                Horilla İK uygulamasının çeviri ve geliştirme süreçleri ile FanVoyage projesinin web inşasında Full-Stack Dev. olarak görev aldım.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Deneyim 3 -->
+                    <div class="py-8 border-b border-lineColor flex flex-col md:flex-row md:items-start justify-between gap-4 group">
+                        <div class="md:w-1/4 pt-1">
+                            <p class="text-textSecondary text-sm font-medium">Güz 2024</p>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h4 class="text-xl md:text-2xl font-medium text-textPrimary mb-1">Sağlık Bilimleri Üniversitesi</h4>
+                            <p class="text-textSecondary mb-4">IT Departmanı Stajyeri</p>
+                            <p class="text-textSecondary/80 font-light max-w-2xl">
+                                E-sınav ve e-soru bankası projelerinde SQL veritabanı sistemleri kullanarak back-end ağırlıklı geliştirmeler yaptım.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= INFO BÖLÜMÜ ================= -->
+        <section id="section-info" class="hidden fade-in">
+            
+            <div class="flex items-center gap-4 mb-8">
+                <div class="w-1.5 h-1.5 bg-textPrimary rotate-45"></div>
+                <span class="text-xs font-semibold tracking-widest text-textSecondary uppercase">Hakkımda</span>
+            </div>
+
+            <!-- Estetik Büyük Başlık (Serif İtalik Karışık) -->
+            <h2 class="text-4xl md:text-5xl lg:text-[64px] font-medium tracking-tight leading-[1.1] text-textPrimary max-w-5xl mb-24">
+                Kullanıcı deneyimini mükemmelleştiren, işlevsel ve verimli yazılımlar geliştirmek asıl motivasyonum.
+            </h2>
+
+            <!-- Asimetrik Fotoğraf & Metin Yerleşimi -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start mb-32">
+                
+                <!-- Sol Fotoğraf (Placeholder) -->
+                <div class="lg:col-span-5">
+                    <div class="overflow-hidden rounded-2xl bg-[#141414] aspect-[3/4]">
+                        <!-- Senin fotoğrafın için placeholder -->
+                        <img src="images/photo 1.jpeg" alt="Ferhat Özün Ögeyik" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80">
+                    </div>
+                    <div class="mt-8 pr-8">
+                        <h3 class="text-xl font-medium text-textPrimary mb-4">Eğitim Geçmişim.</h3>
+                        <p class="text-textSecondary font-light leading-relaxed mb-4">
+                            İstanbul Kültür Üniversitesi, Matematik ve Bilgisayar Bilimleri bölümünden mezun oldum (2022-2026). Eğitim sürecim boyunca üniversite projeleri, kulüp etkinlikleri (HSD) ve stajlarla hem teknik hem de sosyal becerilerimi geliştirdim.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Orta Boşluk (Minimalizm için) -->
+                <div class="hidden lg:block lg:col-span-2"></div>
+
+                <!-- Sağ Fotoğraf (Placeholder) ve Metin -->
+                <div class="lg:col-span-5 lg:mt-32">
+                    <p class="text-sm font-medium text-textSecondary mb-6 border-b border-lineColor pb-4">
+                        Hedefim Full-Stack Developer olarak sektöre değer katmak.
+                    </p>
+                    <div class="overflow-hidden rounded-2xl bg-[#141414] aspect-[3/4]">
+                         <!-- İkinci fotoğraf için placeholder (Çalışırken/Etkinlikten vb.) -->
+                        <img src="images/photo 2.jpeg" alt="Coding" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Yetenekler (Minimal Grid) -->
+            <div class="border-t border-lineColor pt-16 mt-16">
+                <div class="flex items-center gap-4 mb-12">
+                    <div class="w-1.5 h-1.5 bg-textPrimary rotate-45"></div>
+                    <span class="text-xs font-semibold tracking-widest text-textSecondary uppercase">Yetkinlikler</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <!-- Sütun 1 -->
+                    <div>
+                        <h4 class="text-textPrimary font-medium mb-6 text-lg">Yazılım Dilleri</h4>
+                        <ul class="space-y-3 text-textSecondary font-light">
+                            <li>JavaScript / TypeScript</li>
+                            <li>Java</li>
+                            <li>Python</li>
+                            <li>C / C++ / C#</li>
+                            <li>HTML / CSS</li>
+                        </ul>
+                    </div>
+                    <!-- Sütun 2 -->
+                    <div>
+                        <h4 class="text-textPrimary font-medium mb-6 text-lg">Framework & DB</h4>
+                        <ul class="space-y-3 text-textSecondary font-light">
+                            <li>React</li>
+                            <li>Django</li>
+                            <li>Express.js / Node.js</li>
+                            <li>MongoDB</li>
+                            <li>SQL / SQLite</li>
+                        </ul>
+                    </div>
+                    <!-- Sütun 3 -->
+                    <div>
+                        <h4 class="text-textPrimary font-medium mb-6 text-lg">Araçlar & Sertifikalar</h4>
+                        <ul class="space-y-3 text-textSecondary font-light">
+                            <li>Git / GitHub / Vercel</li>
+                            <li>Tailwind CSS / AntDesign</li>
+                            <li>Postman / Trello</li>
+                            <li class="pt-4 mt-4 border-t border-lineColor text-xs">UNICEF Genç Girişimciler (2024)</li>
+                            <li class="text-xs">Canva Kariyer Zirvesi (2024)</li>
+                            <li class="text-xs">Bütün sertifikalarım özgeçmişimde yer almaktadır.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- İletişim Footer -->
+            <div class="border-t border-lineColor pt-16 mt-32">
+                 <h3 class="text-2xl font-medium text-textPrimary mb-8">İletişime Geçin</h3>
+                 <a href="mailto:fozunogeyik@gmail.com?subject=Portfolyo%20Üzerinden%20İletişim&body=Merhaba%20Ferhat,%0A%0A" 
+                   class="block text-4xl md:text-5xl lg:text-6xl font-medium text-zinc-400 hover:text-white transition-colors duration-300 mb-6">
+                    fozunogeyik@gmail.com
+                </a>
+                
+                <p class="text-zinc-500 text-lg">+90 532 152 64 03</p>
+            </div>
+
+    <script>
+        // Tab Değiştirme Mantığı (Desktop ve Mobile Butonları Eşzamanlı Çalışır)
+        function switchTab(tabId) {
+            const btnWork = document.getElementById('btn-work');
+            const btnInfo = document.getElementById('btn-info');
+            const btnWorkMobile = document.getElementById('btn-work-mobile');
+            const btnInfoMobile = document.getElementById('btn-info-mobile');
+            
+            const secWork = document.getElementById('section-work');
+            const secInfo = document.getElementById('section-info');
+
+            // Ortak Aktif/Pasif Sınıflar
+            const activeClasses = ['pill-active'];
+            const inactiveClasses = ['text-textSecondary', 'hover:text-white'];
+
+            if (tabId === 'work') {
+                // Desktop Butonları
+                btnWork.classList.add(...activeClasses);
+                btnWork.classList.remove(...inactiveClasses);
+                btnInfo.classList.remove(...activeClasses);
+                btnInfo.classList.add(...inactiveClasses);
+                
+                // Mobile Butonları
+                if(btnWorkMobile) {
+                    btnWorkMobile.classList.add(...activeClasses);
+                    btnWorkMobile.classList.remove(...inactiveClasses);
+                    btnInfoMobile.classList.remove(...activeClasses);
+                    btnInfoMobile.classList.add(...inactiveClasses);
+                }
+
+                // Bölümleri Göster/Gizle
+                secWork.classList.remove('hidden');
+                secInfo.classList.add('hidden');
+                
+            } else if (tabId === 'info') {
+                // Desktop Butonları
+                btnInfo.classList.add(...activeClasses);
+                btnInfo.classList.remove(...inactiveClasses);
+                btnWork.classList.remove(...activeClasses);
+                btnWork.classList.add(...inactiveClasses);
+
+                // Mobile Butonları
+                if(btnWorkMobile) {
+                    btnInfoMobile.classList.add(...activeClasses);
+                    btnInfoMobile.classList.remove(...inactiveClasses);
+                    btnWorkMobile.classList.remove(...activeClasses);
+                    btnWorkMobile.classList.add(...inactiveClasses);
+                }
+
+                // Bölümleri Göster/Gizle
+                secInfo.classList.remove('hidden');
+                secWork.classList.add('hidden');
+            }
+            
+            // Tıklamadan sonra sayfanın en üstüne yumuşak scroll
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Scroll yapıldığında Navbar'a hafif bir gölge / çizgi ekleme (İsteğe bağlı zarafet)
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('border-lineColor');
+                nav.classList.remove('border-transparent');
+            } else {
+                nav.classList.remove('border-lineColor');
+                nav.classList.add('border-transparent');
+            }
+        });
+    </script>
+</body>
+</html>

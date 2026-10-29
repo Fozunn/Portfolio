@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FanVoyage - Ferhat Özün Ögeyik</title>
+    <link rel="icon" href="images/VoyageFav.png" type="image/VoyageFav.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0a0a0a; color: #f4f4f5; }
+        .font-serif-custom { font-family: 'Playfair Display', serif; }
+        .border-line { border-color: #1f1f1f; }
+    </style>
+</head>
+<body class="antialiased selection:bg-zinc-800 selection:text-white">
+
+    <nav class="fixed w-full top-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-[#1f1f1f] px-6 py-6 md:px-12 flex items-center justify-between">
+        <div class="text-white font-bold tracking-widest text-xl">FÖÖ.</div>
+        <a href="index.html" class="group flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors duration-300">
+            Ana Sayfaya Dön
+        </a>
+    </nav>
+
+    <main class="pt-40 pb-24 px-6 md:px-12 max-w-5xl mx-auto">
+        <header class="mb-16">
+            <h1 class="text-4xl md:text-6xl font-light tracking-tight text-white mb-6">
+                FanVoyage <br><span class="font-serif-custom italic text-zinc-400">Etkinlik - Seyahat Platformu</span>
+            </h1>
+        </header>
+
+        <div class="flex flex-col gap-8 mb-16">
+            <div class="w-full aspect-[16/9] bg-zinc-900 rounded-xl border border-line">
+                <img src="images/fanvoyage-ana-ekran.png" alt="FanVoyage 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            </div>
+            <div class="w-full aspect-[16/9] bg-zinc-900 rounded-xl border border-line">
+                <img src="images/fanvoyage-event-ekran.png" alt="FanVoyage 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 mb-24">
+            <div>
+                <h3 class="text-sm text-zinc-500 uppercase tracking-widest mb-4">Proje Özeti</h3>
+                <p class="text-zinc-300 leading-relaxed text-lg">
+                    İngiltere kökenli turizm ve eğlence etkinlikleri düzenleyen şirket için geliştirilen kapsamlı web platformudur. Kullanıcıların çeşitli etkinlikleri kategorize edebildiği, arama yapabildiği ve rezervasyon süreçlerini yürütebildiği modern bir sistem olarak tasarlandı.
+                </p>
+            </div>
+            <div>
+                <h3 class="text-sm text-zinc-500 uppercase tracking-widest mb-4">Projedeki Rolüm</h3>
+                <ul class="text-zinc-300 leading-relaxed text-lg space-y-4">
+                    <li class="flex items-start gap-3">
+                        <span class="text-zinc-500 mt-1">▹</span>
+                        <span>Edirne Teknopark'ta yer alan iKnow Technology bünyesindeki stajım sırasında dahil olduğum projenin hem front-end hem de back-end aşamalarında aktif rol aldım. Front-end tarafında React ve TypeScript kullanarak etkinliklerin ve kategorilerin sıralandığı dinamik arayüzleri kodladım.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-zinc-500 mt-1">▹</span>
+                        <span>Back-end kısmında ise Java kullanarak bu verilerin API'larını hazırlayıp ilgili entegrasyon işlemlerini sorunsuz bir şekilde tamamladım.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+                <h3 class="text-sm text-zinc-500 uppercase tracking-widest mb-4">Teknolojiler</h3>
+                <ul class="text-zinc-300 leading-relaxed text-lg space-y-4">
+                    <li class="flex items-start gap-3"><span class="text-zinc-500 mt-1">▹</span><span>MongoDB</span></li>
+                    <li class="flex items-start gap-3"><span class="text-zinc-500 mt-1">▹</span><span>TypeScript</span></li>
+                    <li class="flex items-start gap-3"><span class="text-zinc-500 mt-1">▹</span><span>React & Node.js</span></li>
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="flex flex-col items-center gap-6 pt-12 border-line">
+            <a href="https://www.fanvoyage.co.uk" target="_blank" class="inline-flex items-center gap-3 text-lg text-white hover:text-zinc-400 transition-colors duration-300">
+                - Siteyi ziyaret etmek için tıklayın.
+            </a>
+        </div>
+    </main>
+</body>
+</html>
