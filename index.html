@@ -67,25 +67,45 @@
         }
     </style>
 </head>
-<body class="bg-bgDark text-textPrimary">
+<body class="bg-bgDark text-textPrimary relative">
+
+    <div id="mobile-menu" class="fixed inset-0 bg-bgDark/95 backdrop-blur-xl z-[100] flex flex-col justify-center items-center opacity-0 pointer-events-none transition-all duration-300">
+        <button onclick="closeMobileMenu()" class="absolute top-6 right-6 text-textPrimary p-2 focus:outline-none hover:text-textSecondary transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+
+        <div class="flex flex-col items-center gap-10 text-2xl font-medium tracking-tight">
+            <a href="https://www.linkedin.com/in/ferhat-özün-ögeyik/" target="_blank" class="text-textPrimary hover:text-textSecondary transition-colors flex items-center gap-2 group">
+                LinkedIn <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
+            <a href="https://github.com/Fozunn" target="_blank" class="text-textPrimary hover:text-textSecondary transition-colors flex items-center gap-2 group">
+                GitHub <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
+            <a href="FERHAT ÖZÜN ÖGEYİK ÖZGEÇMİŞ.pdf" target="_blank" class="text-textPrimary hover:text-textSecondary transition-colors flex items-center gap-2 group">
+                Özgeçmiş <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
+        </div>
+    </div>
 
     <!-- Navbar -->
-    <nav class="fixed top-0 w-full z-50 bg-bgDark/80 backdrop-blur-md pt-6 pb-4 px-6 md:px-12 lg:px-20 border-b border-transparent transition-all duration-300" id="navbar">
-        <div class="max-w-screen-2xl mx-auto flex items-start md:items-center justify-between">
-            
-            <div class="flex-1 flex flex-col">
+    <nav class="fixed top-0 w-full z-50 bg-bgDark/90 backdrop-blur-md pt-6 pb-4 px-6 md:px-12 lg:px-20 border-b border-transparent transition-all duration-300" id="navbar">
+        <div class="max-w-screen-2xl mx-auto flex items-start justify-between relative">
+
+            <div class="flex flex-col z-10 w-2/3 lg:w-auto">
                 <a href="#" class="text-3xl md:text-4xl font-bold text-textPrimary tracking-tighter mb-2 hover:opacity-80 transition-opacity">
                     FÖÖ.
                 </a>
-                <a href="#" class="text-[17px] font-medium tracking-tight text-textPrimary leading-tight">
+                <a href="#" class="text-[17px] font-medium tracking-tight text-textPrimary leading-tight block">
                     Ferhat Özün Ögeyik
                 </a>
-                <span class="text-[13px] text-textSecondary mt-0.5">
+                <span class="text-[13px] text-textSecondary mt-1 block">
                     Full-Stack Developer
                 </span>
             </div>
-            
-            <div class="hidden md:flex justify-center flex-1">
+
+            <div class="hidden lg:flex absolute left-1/2 top-0 -translate-x-1/2 z-20">
                 <div class="bg-pillBg rounded-full p-1 flex items-center border border-lineColor/50">
                     <button id="btn-work" onclick="switchTab('work')" class="pill-active px-6 py-1.5 rounded-full text-[14px] font-medium transition-all duration-300">
                         Deneyim
@@ -96,92 +116,97 @@
                 </div>
             </div>
 
-            <!-- Sağ: Linkler -->
-            <div class="flex-1 flex justify-end items-center gap-6 text-[14px]">
-                <a href="https://www.linkedin.com/in/ferhat-özün-ögeyik/" target="_blank" class="hidden md:flex items-center gap-1 text-textPrimary hover:text-textSecondary transition-colors group">
+            <div class="flex justify-end items-start gap-6 text-[14px] z-10 pt-1 lg:pt-0">
+
+                <a href="https://www.linkedin.com/in/ferhat-özün-ögeyik/" target="_blank" class="hidden lg:flex items-center gap-1 text-textPrimary hover:text-textSecondary transition-colors group">
                     LinkedIn 
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 arrow-icon transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </a>
-                <a href="https://github.com/Fozunn" target="_blank" class="hidden md:flex items-center gap-1 text-textPrimary hover:text-textSecondary transition-colors group">
+                <a href="https://github.com/Fozunn" target="_blank" class="hidden lg:flex items-center gap-1 text-textPrimary hover:text-textSecondary transition-colors group">
                     GitHub
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 arrow-icon transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </a>
-                <a href="FERHAT ÖZÜN ÖGEYİK ÖZGEÇMİŞ.pdf" target="_blank" class="flex items-center gap-1 text-textPrimary hover:text-textSecondary transition-colors group">
+                <a href="FERHAT ÖZÜN ÖGEYİK ÖZGEÇMİŞ.pdf" target="_blank" class="hidden lg:flex items-center gap-1 text-textPrimary hover:text-textSecondary transition-colors group">
                     Özgeçmiş
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 arrow-icon transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </a>
-            </div>
 
-            <div class="fixed bottom-6 left-1/2 -translate-x-1/2 md:hidden z-50">
-                <div class="bg-pillBg rounded-full p-1 flex items-center border border-lineColor/50 shadow-2xl">
-                    <button id="btn-work-mobile" onclick="switchTab('work')" class="pill-active px-6 py-2 rounded-full text-[14px] font-medium transition-all duration-300">
-                        Deneyim
-                    </button>
-                    <button id="btn-info-mobile" onclick="switchTab('info')" class="text-textSecondary hover:text-white px-6 py-2 rounded-full text-[14px] font-medium transition-all duration-300">
-                        Bilgi
-                    </button>
-                </div>
-            </div>
+                <!-- Mobil Butonu -->
+                <button onclick="openMobileMenu()" class="lg:hidden text-textPrimary p-1 -mt-1 -mr-2 focus:outline-none hover:text-textSecondary transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
 
+            </div>
         </div>
     </nav>
 
-    <main class="max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20 pt-40 pb-32">
+    <!-- Mobil Geçiş Butonları -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 lg:hidden z-[60] w-max">
+        <div class="bg-pillBg/95 backdrop-blur-xl rounded-full p-1.5 flex items-center border border-lineColor/50 shadow-2xl">
+            <button id="btn-work-mobile" onclick="switchTab('work')" class="pill-active px-8 py-2.5 rounded-full text-[15px] font-medium transition-all duration-300">
+                Deneyim
+            </button>
+            <button id="btn-info-mobile" onclick="switchTab('info')" class="text-textSecondary hover:text-white px-8 py-2.5 rounded-full text-[15px] font-medium transition-all duration-300">
+                Bilgi
+            </button>
+        </div>
+    </div>
+
+    <main class="max-w-screen-xl mx-auto px-6 md:px-12 lg:px-20 pt-32 md:pt-40 pb-32">
 
         <!-- ================= WORK BÖLÜMÜ ================= -->
         <section id="section-work" class="fade-in block">
             
-            <div class="mb-32 max-w-4xl">
+            <div class="mb-16 md:mb-32 max-w-4xl">
                 <h1 class="text-3xl md:text-5xl lg:text-[56px] font-medium tracking-tight leading-[1.1] text-textPrimary">
                     Modern web teknolojileri ile dijital çözümler ve ölçeklenebilir uygulamalar geliştiriyorum.
                 </h1>
             </div>
 
             <!-- Projeler -->
-            <div class="mb-32">
+            <div class="mb-16 md:mb-32">
                 <div class="flex items-center gap-4 mb-8">
                     <div class="w-1.5 h-1.5 bg-textPrimary rotate-45"></div>
                     <span class="text-xs font-semibold tracking-widest text-textSecondary uppercase">Projeler</span>
                 </div>
                 
                 <div class="border-t border-lineColor">
-                    <!-- Proje 1 -->
-                    <a href="kulturmuzik.html" class="group flex flex-col md:flex-row md:items-center justify-between py-10 border-b border-lineColor hover:pl-4 transition-all duration-300">
-                        <div class="md:w-2/3 pr-8">
+                    <a href="kulturmuzik.html" class="group flex flex-col md:flex-row md:items-center justify-between py-8 md:py-10 border-b border-lineColor hover:pl-0 md:hover:pl-4 transition-all duration-300">
+                        <div class="md:w-2/3 pr-0 md:pr-8 mb-4 md:mb-0">
                             <h3 class="text-2xl md:text-4xl font-medium text-textPrimary mb-3">Müzik Sanatçı Profil Kütüphanesi</h3>
                             <p class="text-textSecondary font-light leading-relaxed">
                                 Sanatçıların eserlerini sunduğu, doğrudan kullanıcı bağlantılı dijital müzik platformu.
                             </p>
                         </div>
-                        <div class="md:w-1/3 flex justify-between items-center mt-6 md:mt-0 text-textSecondary group-hover:text-textPrimary transition-colors">
+                        <div class="md:w-1/3 flex justify-between items-center text-textSecondary group-hover:text-textPrimary transition-colors">
                             <span class="text-sm font-medium">MERN Stack</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                         </div>
                     </a>
 
-                    <!-- Proje 2 -->
-                    <a href="fanvoyage.html" class="group flex flex-col md:flex-row md:items-center justify-between py-10 border-b border-lineColor hover:pl-4 transition-all duration-300">
-                        <div class="md:w-2/3 pr-8">
+                    <a href="fanvoyage.html" class="group flex flex-col md:flex-row md:items-center justify-between py-8 md:py-10 border-b border-lineColor hover:pl-0 md:hover:pl-4 transition-all duration-300">
+                        <div class="md:w-2/3 pr-0 md:pr-8 mb-4 md:mb-0">
                             <h3 class="text-2xl md:text-4xl font-medium text-textPrimary mb-3">FanVoyage Etkinlik Sistemi</h3>
                             <p class="text-textSecondary font-light leading-relaxed">
                                 İngiltere kökenli turizm şirketi için Full-Stack platform. Kategorizasyon ve API entegrasyonları.
                             </p>
                         </div>
-                        <div class="md:w-1/3 flex justify-between items-center mt-6 md:mt-0 text-textSecondary group-hover:text-textPrimary transition-colors">
+                        <div class="md:w-1/3 flex justify-between items-center text-textSecondary group-hover:text-textPrimary transition-colors">
                             <span class="text-sm font-medium">React, Java, TS</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                         </div>
                     </a>
 
-                    <!-- Proje 3 -->
-                    <a href="horilla.html" class="group flex flex-col md:flex-row md:items-center justify-between py-10 border-b border-lineColor hover:pl-4 transition-all duration-300">
-                        <div class="md:w-2/3 pr-8">
+                    <a href="horilla.html" class="group flex flex-col md:flex-row md:items-center justify-between py-8 md:py-10 border-b border-lineColor hover:pl-0 md:hover:pl-4 transition-all duration-300">
+                        <div class="md:w-2/3 pr-0 md:pr-8 mb-4 md:mb-0">
                             <h3 class="text-2xl md:text-4xl font-medium text-textPrimary mb-3">Horilla İK Yönetimi</h3>
                             <p class="text-textSecondary font-light leading-relaxed">
                                 Open Source İK yönetim sisteminin geliştirilmesi, çoklu dil desteği ve JS iyileştirmeleri.
                             </p>
                         </div>
-                        <div class="md:w-1/3 flex justify-between items-center mt-6 md:mt-0 text-textSecondary group-hover:text-textPrimary transition-colors">
+                        <div class="md:w-1/3 flex justify-between items-center text-textSecondary group-hover:text-textPrimary transition-colors">
                             <span class="text-sm font-medium">Django, JS</span>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 arrow-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                         </div>
@@ -197,43 +222,40 @@
                 </div>
 
                 <div class="border-t border-lineColor">
-                    <!-- Deneyim 1 -->
-                    <div class="py-8 border-b border-lineColor flex flex-col md:flex-row md:items-start justify-between gap-4 group">
+                    <div class="py-8 border-b border-lineColor flex flex-col md:flex-row md:items-start justify-between gap-2 md:gap-4 group">
                         <div class="md:w-1/4 pt-1">
                             <p class="text-textSecondary text-sm font-medium">2025 — 2026</p>
                         </div>
                         <div class="md:w-3/4">
                             <h4 class="text-xl md:text-2xl font-medium text-textPrimary mb-1">Huawei Student Developers (HSD)</h4>
-                            <p class="text-textSecondary mb-4">Üye & Koordinatör</p>
-                            <p class="text-textSecondary/80 font-light max-w-2xl">
+                            <p class="text-textSecondary mb-3 md:mb-4 text-sm md:text-base">Üye & Koordinatör</p>
+                            <p class="text-textSecondary/80 font-light max-w-2xl text-sm md:text-base leading-relaxed">
                                 Cloud ve Web alanlarında eğitimler alıp şirket dinamiklerine uygun etkinliklerde koordinatörlük görevleri üstlendim.
                             </p>
                         </div>
                     </div>
 
-                    <!-- Deneyim 2 -->
-                    <div class="py-8 border-b border-lineColor flex flex-col md:flex-row md:items-start justify-between gap-4 group">
+                    <div class="py-8 border-b border-lineColor flex flex-col md:flex-row md:items-start justify-between gap-2 md:gap-4 group">
                         <div class="md:w-1/4 pt-1">
                             <p class="text-textSecondary text-sm font-medium">Yaz 2025</p>
                         </div>
                         <div class="md:w-3/4">
                             <h4 class="text-xl md:text-2xl font-medium text-textPrimary mb-1">iKnow Technology</h4>
-                            <p class="text-textSecondary mb-4">Full-Stack Stajyer</p>
-                            <p class="text-textSecondary/80 font-light max-w-2xl">
+                            <p class="text-textSecondary mb-3 md:mb-4 text-sm md:text-base">Full-Stack Stajyer</p>
+                            <p class="text-textSecondary/80 font-light max-w-2xl text-sm md:text-base leading-relaxed">
                                 Horilla İK uygulamasının çeviri ve geliştirme süreçleri ile FanVoyage projesinin web inşasında Full-Stack Dev. olarak görev aldım.
                             </p>
                         </div>
                     </div>
 
-                    <!-- Deneyim 3 -->
-                    <div class="py-8 border-b border-lineColor flex flex-col md:flex-row md:items-start justify-between gap-4 group">
+                    <div class="py-8 border-b border-lineColor flex flex-col md:flex-row md:items-start justify-between gap-2 md:gap-4 group">
                         <div class="md:w-1/4 pt-1">
                             <p class="text-textSecondary text-sm font-medium">Güz 2024</p>
                         </div>
                         <div class="md:w-3/4">
                             <h4 class="text-xl md:text-2xl font-medium text-textPrimary mb-1">Sağlık Bilimleri Üniversitesi</h4>
-                            <p class="text-textSecondary mb-4">IT Departmanı Stajyeri</p>
-                            <p class="text-textSecondary/80 font-light max-w-2xl">
+                            <p class="text-textSecondary mb-3 md:mb-4 text-sm md:text-base">IT Departmanı Stajyeri</p>
+                            <p class="text-textSecondary/80 font-light max-w-2xl text-sm md:text-base leading-relaxed">
                                 E-sınav ve e-soru bankası projelerinde SQL veritabanı sistemleri kullanarak back-end ağırlıklı geliştirmeler yaptım.
                             </p>
                         </div>
@@ -241,7 +263,6 @@
                 </div>
             </div>
         </section>
-
 
         <!-- ================= INFO BÖLÜMÜ ================= -->
         <section id="section-info" class="hidden fade-in">
@@ -251,20 +272,19 @@
                 <span class="text-xs font-semibold tracking-widest text-textSecondary uppercase">Hakkımda</span>
             </div>
 
-            <h2 class="text-4xl md:text-5xl lg:text-[64px] font-medium tracking-tight leading-[1.1] text-textPrimary max-w-5xl mb-24">
+            <h2 class="text-3xl md:text-5xl lg:text-[64px] font-medium tracking-tight leading-[1.1] text-textPrimary max-w-5xl mb-16 md:mb-24">
                 Kullanıcı deneyimini mükemmelleştiren, işlevsel ve verimli yazılımlar geliştirmek asıl motivasyonum.
             </h2>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start mb-32">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start mb-16 md:mb-32">
                 
-                <!-- Sol Fotoğraf -->
                 <div class="lg:col-span-5">
                     <div class="overflow-hidden rounded-2xl bg-[#141414] aspect-[3/4]">
-                        <img src="images/photo 1.jpeg" alt="Ferhat Özün Ögeyik" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80">
+                        <img src="images/photo 1.jpeg" alt="Ferhat Özün Ögeyik" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105 opacity-80">
                     </div>
-                    <div class="mt-8 pr-8">
+                    <div class="mt-8 pr-0 md:pr-8">
                         <h3 class="text-xl font-medium text-textPrimary mb-4">Eğitim Geçmişim.</h3>
-                        <p class="text-textSecondary font-light leading-relaxed mb-4">
+                        <p class="text-textSecondary font-light leading-relaxed mb-4 text-sm md:text-base">
                             İstanbul Kültür Üniversitesi, Matematik ve Bilgisayar Bilimleri bölümünden mezun oldum (2022-2026). Eğitim sürecim boyunca üniversite projeleri, kulüp etkinlikleri (HSD) ve stajlarla hem teknik hem de sosyal becerilerimi geliştirdim.
                         </p>
                     </div>
@@ -272,29 +292,28 @@
 
                 <div class="hidden lg:block lg:col-span-2"></div>
 
-                <!-- Sağ Fotoğraf -->
                 <div class="lg:col-span-5 lg:mt-32">
-                    <p class="text-sm font-medium text-textSecondary mb-6 border-b border-lineColor pb-4">
+                    <p class="text-sm md:text-base font-medium text-textSecondary mb-6 border-b border-lineColor pb-4">
                         Hedefim Full-Stack Developer olarak sektöre değer katmak.
                     </p>
                     <div class="overflow-hidden rounded-2xl bg-[#141414] aspect-[3/4]">
-                        <img src="images/photo 2.jpeg" alt="Coding" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80">
+                        <img src="images/photo 2.jpeg" alt="Coding" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105 opacity-80">
                     </div>
                 </div>
 
             </div>
 
             <!-- Yetenekler -->
-            <div class="border-t border-lineColor pt-16 mt-16">
-                <div class="flex items-center gap-4 mb-12">
+            <div class="border-t border-lineColor pt-12 md:pt-16 mt-12 md:mt-16">
+                <div class="flex items-center gap-4 mb-8 md:mb-12">
                     <div class="w-1.5 h-1.5 bg-textPrimary rotate-45"></div>
                     <span class="text-xs font-semibold tracking-widest text-textSecondary uppercase">Yetkinlikler</span>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
                     <div>
-                        <h4 class="text-textPrimary font-medium mb-6 text-lg">Yazılım Dilleri</h4>
-                        <ul class="space-y-3 text-textSecondary font-light">
+                        <h4 class="text-textPrimary font-medium mb-4 md:mb-6 text-base md:text-lg">Yazılım Dilleri</h4>
+                        <ul class="space-y-2 md:space-y-3 text-textSecondary font-light text-sm md:text-base">
                             <li>JavaScript / TypeScript</li>
                             <li>Java</li>
                             <li>Python</li>
@@ -303,8 +322,8 @@
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-textPrimary font-medium mb-6 text-lg">Framework & DB</h4>
-                        <ul class="space-y-3 text-textSecondary font-light">
+                        <h4 class="text-textPrimary font-medium mb-4 md:mb-6 text-base md:text-lg">Framework & DB</h4>
+                        <ul class="space-y-2 md:space-y-3 text-textSecondary font-light text-sm md:text-base">
                             <li>React</li>
                             <li>Django</li>
                             <li>Express.js / Node.js</li>
@@ -313,31 +332,48 @@
                         </ul>
                     </div>
                     <div>
-                        <h4 class="text-textPrimary font-medium mb-6 text-lg">Araçlar & Sertifikalar</h4>
-                        <ul class="space-y-3 text-textSecondary font-light">
+                        <h4 class="text-textPrimary font-medium mb-4 md:mb-6 text-base md:text-lg">Araçlar & Sertifikalar</h4>
+                        <ul class="space-y-2 md:space-y-3 text-textSecondary font-light text-sm md:text-base">
                             <li>Git / GitHub / Vercel</li>
                             <li>Tailwind CSS / AntDesign</li>
                             <li>Postman / Trello</li>
                             <li class="pt-4 mt-4 border-t border-lineColor text-xs">UNICEF Genç Girişimciler (2024)</li>
                             <li class="text-xs">Canva Kariyer Zirvesi (2024)</li>
-                            <li class="text-xs">Bütün sertifikalarım özgeçmişimde yer almaktadır.</li>
+                            <li class="text-xs italic">Bütün sertifikalarım özgeçmişimde yer almaktadır.</li>
                         </ul>
                     </div>
                 </div>
             </div>
             
             <!-- İletişim -->
-            <div class="border-t border-lineColor pt-16 mt-32">
-                 <h3 class="text-2xl font-medium text-textPrimary mb-8">İletişime Geçin</h3>
+            <div class="border-t border-lineColor pt-12 md:pt-16 mt-16 md:mt-32">
+                 <h3 class="text-xl md:text-2xl font-medium text-textPrimary mb-6 md:mb-8">İletişime Geçin</h3>
                  <a href="mailto:fozunogeyik@gmail.com?subject=Portfolyo%20Üzerinden%20İletişim&body=Merhaba%20Ferhat,%0A%0A" 
-                   class="block text-4xl md:text-5xl lg:text-6xl font-medium text-zinc-400 hover:text-white transition-colors duration-300 mb-6">
+                   class="block break-all md:break-normal text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium text-textSecondary hover:text-white transition-colors duration-300 mb-4 md:mb-6">
                     fozunogeyik@gmail.com
                 </a>
                 
-                <p class="text-zinc-500 text-lg">+90 532 152 64 03</p>
+                <p class="text-zinc-500 text-base md:text-lg">+90 532 152 64 03</p>
             </div>
+        </section>
+    </main>
 
     <script>
+        // Mobil Menü Fonksiyonları
+        function openMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.remove('opacity-0', 'pointer-events-none');
+            menu.classList.add('opacity-100', 'pointer-events-auto');
+            document.body.style.overflow = 'hidden'; 
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.remove('opacity-100', 'pointer-events-auto');
+            menu.classList.add('opacity-0', 'pointer-events-none');
+            document.body.style.overflow = ''; 
+        }
+
         function switchTab(tabId) {
             const btnWork = document.getElementById('btn-work');
             const btnInfo = document.getElementById('btn-info');
